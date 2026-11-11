@@ -52,3 +52,4 @@ class CreateRolesTable extends Migration
         $this->forge->dropTable('roles', true);
     }
 }
+

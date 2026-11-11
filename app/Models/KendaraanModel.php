@@ -31,6 +31,7 @@ class KendaraanModel extends Model
 
     // Validation
     protected $validationRules = [
+        'id'                  => 'permit_empty|is_natural_no_zero',
         'perangkat_daerah_id' => 'required|is_not_unique[perangkat_daerah.id]',
         'pegawai_id'          => 'permit_empty|is_not_unique[pegawai.id]',
         'nomor_polisi'        => 'required|min_length[3]|max_length[15]|is_unique[kendaraan.nomor_polisi,id,{id}]',

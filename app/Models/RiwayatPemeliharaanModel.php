@@ -29,6 +29,7 @@ class RiwayatPemeliharaanModel extends Model
 
     // Validation
     protected $validationRules = [
+        'id'                   => 'permit_empty|is_natural_no_zero',
         'kendaraan_id'         => 'required|is_not_unique[kendaraan.id]',
         'tanggal_servis'       => 'required|valid_date[Y-m-d]',
         'deskripsi_perbaikan'  => 'required|min_length[5]',

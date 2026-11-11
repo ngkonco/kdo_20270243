@@ -27,6 +27,7 @@ class RoleModel extends Model
 
     // Validation
     protected $validationRules = [
+        'id'        => 'permit_empty|is_natural_no_zero',
         'kode_role' => 'required|min_length[3]|max_length[30]|alpha_dash|is_unique[roles.kode_role,id,{id}]',
         'nama_role' => 'required|min_length[3]|max_length[100]',
         'deskripsi' => 'permit_empty|max_length[255]',

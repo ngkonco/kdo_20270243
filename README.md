@@ -1,5 +1,7 @@
 # Sistem Informasi Pengelolaan Kendaraan Dinas Operasional (SIM-KDO)
 # Dibuat Oleh Sugeng Riyadi dengan bantuan AI untuk memenuhi Ujian Praktek Untuk Posisi Junior Web Developer BPAD
+# Aplikasi ini dibangun menggunakan bahasa pemrograman PHP Framework CodeIgniter 4, Database MariaDB 10.11, Bootstrap 5.3, dan DevSecOps dengan Docker. dengan menggunakkan IDE Antigravity by Google model 3.8 Flash
+
 ### Pengelolaan Aset Barang Milik Daerah (BMD) Berbasis CodeIgniter 4 & Docker
 
 ![PHP Version](https://img.shields.io/badge/PHP-8.4%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)
@@ -105,6 +107,14 @@ database_dump.sql
    - Simpan data: sistem secara otomatis memperbarui status kelaikan fisik pada tabel `kendaraan` menjadi "Baik".
 4. **Relational Integrity & Deletion Protection (`/perangkat-daerah`)**:
    - Coba hapus Perangkat Daerah yang masih memiliki kendaraan atau pegawai aktif. Sistem akan menolak dan memberikan pesan peringatan SweetAlert demi menjaga integritas data BMD.
+5. **Manajemen Role & Hak Akses Modul (`/roles`)**:
+   - Tinjau daftar role sistem (`admin`, `operator`, `pimpinan`) lengkap dengan badge hak akses modul dan counter pengguna aktif.
+   - Buat role baru dengan memilih matriks izin modul via checkbox interaktif (tersedia tombol "Pilih Semua" dan "Batal Semua").
+   - Sistem melindungi role `admin` bawaan agar tidak dapat dihapus atau diubah kode role-nya.
+6. **Manajemen Akun Pengguna (`/users`)**:
+   - Tambah akun pengguna baru dengan NIP/gelar, username, email kedinasan, relasi foreign key `role_id`, dan password terenkripsi Bcrypt.
+   - Edit profil pengguna dan fitur ganti kata sandi opsional.
+   - Proteksi diri: Pengguna tidak dapat menghapus akunnya sendiri yang sedang aktif login, dan akun Administrator utama (ID 1) terkunci dari penghapusan.
 
 ---
 
@@ -133,6 +143,8 @@ Tangkapan layar pengujian telah didokumentasikan dan tersimpan rapi pada folder 
 - [x] **Database Relasional**: `screenshot_aplikasi/fullstack/database.png` (Struktur 3NF di phpMyAdmin).
 - [x] **Bukti REST API**: `screenshot_aplikasi/fullstack/backend/pengujian rest api pegawai by instansi.png` (Eksekusi endpoint JSON via browser/HTTP client).
 - [x] **Bukti Update Database**: `screenshot_aplikasi/fullstack/backend/bukti berhasil simpan ke database ketika update data.png`.
+- [x] **Master Role & Hak Akses**: `screenshot_aplikasi/fullstack/frontend/tambahan_menu_master_role.png` (Matriks izin per modul, daftar role, dan jumlah akun aktif).
+- [x] **Master Pengguna Sistem**: `screenshot_aplikasi/fullstack/frontend/tambahan_menu_master_pengguna.png` (Daftar akun pengguna, role badge, dan proteksi akun utama).
 
 ---
 

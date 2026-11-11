@@ -76,7 +76,7 @@ class RoleController extends BaseController
             'hak_akses' => json_encode(array_values($permissions)),
         ];
 
-        $this->roleModel->save($saveData);
+        $this->roleModel->skipValidation(true)->save($saveData);
 
         return redirect()->to(base_url('roles'))->with('success', 'Role baru berhasil ditambahkan ke sistem.');
     }
@@ -138,7 +138,7 @@ class RoleController extends BaseController
             'hak_akses' => json_encode(array_values($permissions)),
         ];
 
-        $this->roleModel->save($saveData);
+        $this->roleModel->skipValidation(true)->save($saveData);
 
         return redirect()->to(base_url('roles'))->with('success', 'Data Role berhasil diperbarui.');
     }

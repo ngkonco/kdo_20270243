@@ -63,6 +63,30 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
         $routes->get('delete/(:num)', 'PemeliharaanController::delete/$1');
         $routes->post('delete/(:num)', 'PemeliharaanController::delete/$1');
     });
+
+    // Modul Master Role & Hak Akses
+    $routes->group('roles', static function ($routes) {
+        $routes->get('/', 'RoleController::index');
+        $routes->get('create', 'RoleController::create');
+        $routes->post('store', 'RoleController::store');
+        $routes->get('edit/(:num)', 'RoleController::edit/$1');
+        $routes->post('update/(:num)', 'RoleController::update/$1');
+        $routes->get('delete/(:num)', 'RoleController::delete/$1');
+        $routes->post('delete/(:num)', 'RoleController::delete/$1');
+    });
+    $routes->addRedirect('role', 'roles');
+
+    // Modul Master Pengguna Sistem
+    $routes->group('users', static function ($routes) {
+        $routes->get('/', 'UserController::index');
+        $routes->get('create', 'UserController::create');
+        $routes->post('store', 'UserController::store');
+        $routes->get('edit/(:num)', 'UserController::edit/$1');
+        $routes->post('update/(:num)', 'UserController::update/$1');
+        $routes->get('delete/(:num)', 'UserController::delete/$1');
+        $routes->post('delete/(:num)', 'UserController::delete/$1');
+    });
+    $routes->addRedirect('pengguna', 'users');
 });
 
 // API Public Routes

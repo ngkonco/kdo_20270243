@@ -28,6 +28,7 @@ class PegawaiModel extends Model
 
     // Validation
     protected $validationRules = [
+        'id'                  => 'permit_empty|is_natural_no_zero',
         'perangkat_daerah_id' => 'required|is_not_unique[perangkat_daerah.id]',
         'nip'                 => 'required|numeric|exact_length[18]|is_unique[pegawai.nip,id,{id}]',
         'nama_pegawai'        => 'required|min_length[3]|max_length[100]',

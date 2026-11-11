@@ -12,6 +12,8 @@ Dokumen ini berisi informasi tautan akses, akun pengguna terotentikasi, kredensi
 | :--- | :--- | :--- |
 | **Halaman Login SIM-KDO** | [http://localhost:8080/login](http://localhost:8080/login) | Pintu masuk autentikasi utama (*Protected Session*) |
 | **Dashboard Utama** | [http://localhost:8080/](http://localhost:8080/) atau [http://localhost:8080/dashboard](http://localhost:8080/dashboard) | Halaman ringkasan analitik KDO |
+| **Master Role & Hak Akses** | [http://localhost:8080/roles](http://localhost:8080/roles) | Pengelolaan tingkatan wewenang dan izin modul |
+| **Master Pengguna Sistem** | [http://localhost:8080/users](http://localhost:8080/users) | Pengelolaan akun, password, dan penugasan peran |
 | **phpMyAdmin Database GUI** | [http://localhost:8081](http://localhost:8081) | Pengelolaan database MariaDB via GUI web |
 
 ---

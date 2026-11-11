@@ -50,6 +50,8 @@
                     </li>
                     <li><a class="dropdown-item py-2 d-flex align-items-center gap-2 text-secondary" href="<?= base_url('kendaraan') ?>"><i class="fa-solid fa-car text-primary"></i>Kelola Armada</a></li>
                     <li><a class="dropdown-item py-2 d-flex align-items-center gap-2 text-secondary" href="<?= base_url('pemeliharaan') ?>"><i class="fa-solid fa-wrench text-warning"></i>Jadwal Servis</a></li>
+                    <li><a class="dropdown-item py-2 d-flex align-items-center gap-2 text-secondary" href="<?= base_url('users') ?>"><i class="fa-solid fa-users-gear text-info"></i>Master Pengguna</a></li>
+                    <li><a class="dropdown-item py-2 d-flex align-items-center gap-2 text-secondary" href="<?= base_url('roles') ?>"><i class="fa-solid fa-shield-halved text-success"></i>Master Role & Hak Akses</a></li>
                     <li><hr class="dropdown-divider my-1"></li>
                     <li>
                         <a class="dropdown-item py-2 d-flex align-items-center gap-2 text-danger fw-semibold" href="<?= base_url('logout') ?>">

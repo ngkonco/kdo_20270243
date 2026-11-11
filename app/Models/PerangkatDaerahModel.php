@@ -27,6 +27,7 @@ class PerangkatDaerahModel extends Model
 
     // Validation
     protected $validationRules = [
+        'id'            => 'permit_empty|is_natural_no_zero',
         'kode_instansi' => 'required|min_length[3]|max_length[20]|is_unique[perangkat_daerah.kode_instansi,id,{id}]',
         'nama_instansi' => 'required|min_length[3]|max_length[150]',
         'alamat'        => 'permit_empty',

@@ -96,7 +96,7 @@ class UserController extends BaseController
             'password'     => password_hash((string) $this->request->getPost('password'), PASSWORD_BCRYPT),
         ];
 
-        $this->userModel->save($saveData);
+        $this->userModel->skipValidation(true)->save($saveData);
 
         return redirect()->to(base_url('users'))->with('success', 'Akun Pengguna baru berhasil didaftarkan.');
     }
@@ -179,7 +179,7 @@ class UserController extends BaseController
             $updateData['password'] = password_hash($newPassword, PASSWORD_BCRYPT);
         }
 
-        $this->userModel->save($updateData);
+        $this->userModel->skipValidation(true)->save($updateData);
 
         // Jika user yang diupdate adalah user yang sedang login, sinkronkan nama sesi
         if ((int) $id === (int) session('user_id')) {

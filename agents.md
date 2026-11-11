@@ -33,11 +33,11 @@ Cakupan instruksi mencakup:
 | `Dockerfile` | Konfigurasi image PHP 8.4 Apache, instalasi paket OS & ekstensi PHP, konfigurasi vhost DocumentRoot `public/`, dan setup perizinan direktori `writable/`. | Selesai & Teruji |
 | `docker-compose.yml` | Orkestrasi 3 layanan (`app`, `db` MariaDB 10.11, `pma` phpMyAdmin) dengan persistent storage, network bridge, dan healthcheck. | Selesai & Teruji |
 | `docker/apache/000-default.conf` | VirtualHost Apache dengan direktif `AllowOverride All` dan direct point ke DocumentRoot `public/`. | Selesai & Teruji |
-| `app/Database/Migrations/` | 4 Berkas migrasi database normalisasi 3NF dengan tipe data presisi, indeks, dan relasi foreign key. | Selesai & Teruji |
-| `app/Database/Seeds/` | 5 Berkas seeder (Perangkat Daerah, Pegawai, Kendaraan, Riwayat Pemeliharaan, dan MainSeeder) dengan data realistis plat dinas merah. | Selesai & Teruji |
+| `app/Database/Migrations/` | 6 Berkas migrasi database normalisasi 3NF (`users`, `perangkat_daerah`, `pegawai`, `kendaraan`, `riwayat_pemeliharaan`, `roles`, `add_role_id_to_users`). | Selesai & Teruji |
+| `app/Database/Seeds/` | 6 Berkas seeder (RoleSeeder, UserSeeder, PerangkatDaerahSeeder, PegawaiSeeder, KendaraanSeeder, RiwayatPemeliharaanSeeder, MainSeeder) dengan data realistis. | Selesai & Teruji |
 | `database_dump.sql` | Berkas dump SQL mandiri skema + seeder data siap impor langsung. | Selesai & Teruji |
-| `app/Models/` | 5 Model (`UserModel`, `PerangkatDaerahModel`, `PegawaiModel`, `KendaraanModel`, `RiwayatPemeliharaanModel`) lengkap dengan `$allowedFields`, validasi, dan agregasi data analitik. | Selesai & Teruji |
-| `app/Controllers/` | 6 Controller (`AuthController`, `DashboardController`, `PerangkatDaerahController`, `PegawaiController`, `KendaraanController`, `PemeliharaanController`) dengan logika autentikasi, CRUD lengkap, AJAX endpoint, dan feedback flashdata. | Selesai & Teruji |
+| `app/Models/` | 6 Model (`RoleModel`, `UserModel`, `PerangkatDaerahModel`, `PegawaiModel`, `KendaraanModel`, `RiwayatPemeliharaanModel`) lengkap dengan `$allowedFields`, validasi, dan agregasi data analitik. | Selesai & Teruji |
+| `app/Controllers/` | 8 Controller (`AuthController`, `DashboardController`, `PerangkatDaerahController`, `PegawaiController`, `KendaraanController`, `PemeliharaanController`, `RoleController`, `UserController`) dengan logika autentikasi, CRUD lengkap, AJAX endpoint, dan feedback flashdata. | Selesai & Teruji |
 | `app/Filters/` | 2 Filter Keamanan (`SecurityHeadersFilter` & `AuthFilter` untuk proteksi sesi). | Selesai & Teruji |
 | `app/Views/layouts/` | Master view `main.php`, Metronic-style dark sidebar `sidebar.php`, dan sticky header navbar `navbar.php`. | Selesai & Teruji |
 | `app/Views/auth/login.php` | Antarmuka login modern dengan kontras warna tinggi, ambient glow, eye-toggle password, dan 1-Click Demo Login pills. | Selesai & Teruji |
@@ -46,6 +46,8 @@ Cakupan instruksi mencakup:
 | `app/Views/pegawai/` | View index, create, dan edit master pegawai PNS. | Selesai & Teruji |
 | `app/Views/perangkat_daerah/` | View index, create, dan edit master perangkat daerah. | Selesai & Teruji |
 | `app/Views/pemeliharaan/` | View index rekapitulasi, create pencatatan servis (sinkronisasi status), dan edit. | Selesai & Teruji |
+| `app/Views/roles/` | View index, create, dan edit master role pengguna beserta matriks hak akses modul. | Selesai & Teruji |
+| `app/Views/users/` | View index, create, dan edit master pengguna sistem dengan proteksi akun aktif & admin utama. | Selesai & Teruji |
 | `README.md`, `agents.md`, `akses_aplikasi.md`, `bukti_pengujian_rest_api.md` | Dokumentasi teknis, kredensial pengguna, bukti pengujian REST API, petunjuk instalasi, panduan ekspor database, dan deklarasi AI. | Selesai & Teruji |
 
 ---

@@ -31,3 +31,4 @@ class AddRoleIdToUsersTable extends Migration
         $this->forge->dropColumn('users', 'role_id');
     }
 }
+

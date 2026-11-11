@@ -25,9 +25,9 @@
                 </div>
                 <span class="position-absolute bottom-0 end-0 p-1 bg-success border border-dark rounded-circle"></span>
             </div>
-            <div class="overflow-hidden">
-                <div class="text-white fw-semibold text-truncate fs-7"><?= esc(session('nama_lengkap') ?? 'Administrator') ?></div>
-                <small class="text-muted d-block text-truncate" style="font-size: 11px;"><?= strtoupper(esc(session('role') ?? 'Admin')) ?> BMD</small>
+            <div class="overflow-hidden flex-grow-1">
+                <div class="text-white fw-semibold lh-sm text-truncate" style="font-size: 0.85rem;" title="<?= esc(session('nama_lengkap') ?? 'Administrator BMD') ?>"><?= esc(session('nama_lengkap') ?? 'Administrator BMD') ?></div>
+                <small class="text-secondary d-block mt-1" style="font-size: 11px;"><i class="fa-solid fa-circle-check text-success me-1"></i><?= strtoupper(esc(session('role') ?? 'Admin')) ?> BMD</small>
             </div>
         </div>
     </div>
@@ -72,6 +72,22 @@
                 <a href="<?= base_url('perangkat-daerah') ?>" class="nav-link d-flex align-items-center gap-3 px-3 py-2 rounded-2 <?= ($active_menu === 'perangkat_daerah') ? 'active bg-primary text-white shadow-sm' : 'text-secondary hover-dark' ?>">
                     <i class="fa-solid fa-building-columns fs-6" style="width: 20px;"></i>
                     <span class="fw-medium fs-7">Perangkat Daerah</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="text-uppercase text-secondary fw-bold px-3 mb-2" style="font-size: 10px; letter-spacing: 1.2px;">Manajemen Akses</div>
+        <ul class="nav nav-pills flex-column gap-1 mb-4">
+            <li class="nav-item">
+                <a href="<?= base_url('roles') ?>" class="nav-link d-flex align-items-center gap-3 px-3 py-2 rounded-2 <?= ($active_menu === 'roles') ? 'active bg-primary text-white shadow-sm' : 'text-secondary hover-dark' ?>">
+                    <i class="fa-solid fa-shield-halved fs-6" style="width: 20px;"></i>
+                    <span class="fw-medium fs-7">Master Role</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= base_url('users') ?>" class="nav-link d-flex align-items-center gap-3 px-3 py-2 rounded-2 <?= ($active_menu === 'users') ? 'active bg-primary text-white shadow-sm' : 'text-secondary hover-dark' ?>">
+                    <i class="fa-solid fa-users-gear fs-6" style="width: 20px;"></i>
+                    <span class="fw-medium fs-7">Master Pengguna</span>
                 </a>
             </li>
         </ul>
