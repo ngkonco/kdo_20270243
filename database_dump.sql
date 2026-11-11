@@ -10,6 +10,29 @@ START TRANSACTION;
 SET time_zone = "+07:00";
 
 -- --------------------------------------------------------
+-- Table structure for table `users`
+-- --------------------------------------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `nama_lengkap` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('admin','operator','pimpinan') NOT NULL DEFAULT 'admin',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table `users`
+INSERT INTO `users` (`id`, `username`, `nama_lengkap`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'Administrator BMD', 'admin@bmd.pemda.go.id', '$2y$10$wE8wB2R18zB98wFk8UuP8.o41Ue3tE9Z64EwzXg2V0oKjX47t/h1i', 'admin', '2026-11-11 10:00:00', '2026-11-11 10:00:00'),
+(2, 'operator', 'Operator Pengurus Barang', 'operator@bmd.pemda.go.id', '$2y$10$wE8wB2R18zB98wFk8UuP8.o41Ue3tE9Z64EwzXg2V0oKjX47t/h1i', 'operator', '2026-11-11 10:00:00', '2026-11-11 10:00:00');
+
+-- --------------------------------------------------------
 -- Table structure for table `perangkat_daerah`
 -- --------------------------------------------------------
 DROP TABLE IF EXISTS `perangkat_daerah`;

@@ -26,8 +26,8 @@
                 <span class="position-absolute bottom-0 end-0 p-1 bg-success border border-dark rounded-circle"></span>
             </div>
             <div class="overflow-hidden">
-                <div class="text-white fw-semibold text-truncate fs-7">Administrator</div>
-                <small class="text-muted d-block text-truncate" style="font-size: 11px;">Pengelola Aset BMD</small>
+                <div class="text-white fw-semibold text-truncate fs-7"><?= esc(session('nama_lengkap') ?? 'Administrator') ?></div>
+                <small class="text-muted d-block text-truncate" style="font-size: 11px;"><?= strtoupper(esc(session('role') ?? 'Admin')) ?> BMD</small>
             </div>
         </div>
     </div>

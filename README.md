@@ -1,4 +1,5 @@
 # Sistem Informasi Pengelolaan Kendaraan Dinas Operasional (SIM-KDO)
+# Dibuat Oleh Sugeng Riyadi dengan bantuan AI untuk memenuhi Ujian Praktek Untuk Posisi Junior Web Developer BPAD
 ### Pengelolaan Aset Barang Milik Daerah (BMD) Berbasis CodeIgniter 4 & Docker
 
 ![PHP Version](https://img.shields.io/badge/PHP-8.4%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)
@@ -58,11 +59,15 @@ Aplikasi ini mengadopsi standar arsitektur **MVC (Model-View-Controller)** yang 
 
 ## 🌐 4. URL Akses & Kredensial Layanan
 
-| Layanan | URL Akses | Username | Password |
+| Layanan / Peran | URL Akses | Username / Email | Password |
 | :--- | :--- | :--- | :--- |
-| **Aplikasi Web SIM-KDO** | [http://localhost:8080](http://localhost:8080) | *(Akses Langsung)* | - |
+| **Login Web SIM-KDO (Admin)** | [http://localhost:8080/login](http://localhost:8080/login) | `admin` *(atau admin@bmd.pemda.go.id)* | `admin123` |
+| **Login Web SIM-KDO (Operator)** | [http://localhost:8080/login](http://localhost:8080/login) | `operator` | `operator123` |
+| **Login Web SIM-KDO (Pimpinan)** | [http://localhost:8080/login](http://localhost:8080/login) | `pimpinan` | `pimpinan123` |
 | **phpMyAdmin Database GUI** | [http://localhost:8081](http://localhost:8081) | `kdo_user` | `kdo_password_2026` |
 | **phpMyAdmin (Root)** | [http://localhost:8081](http://localhost:8081) | `root` | `root_password_kdo_2026` |
+
+*(Tersedia tombol **1-Klik Demo Login** langsung di halaman login untuk kemudahan pengujian).*
 
 ---
 

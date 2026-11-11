@@ -40,17 +40,22 @@
             <!-- Admin Avatar dropdown -->
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://ui-avatars.com/api/?name=Admin+BMD&background=1e1e2d&color=3699ff&bold=true" alt="Avatar" width="34" height="34" class="rounded-circle shadow-sm border border-2 border-primary border-opacity-50">
+                    <img src="https://ui-avatars.com/api/?name=<?= urlencode(session('nama_lengkap') ?? 'Admin BMD') ?>&background=1e1e2d&color=3699ff&bold=true" alt="Avatar" width="34" height="34" class="rounded-circle shadow-sm border border-2 border-primary border-opacity-50">
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2 py-2" aria-labelledby="dropdownUser" style="width: 220px;">
+                <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2 py-2" aria-labelledby="dropdownUser" style="width: 240px;">
                     <li class="px-3 py-2 border-bottom">
-                        <span class="d-block fw-bold text-dark fs-7">Pengelola Aset</span>
-                        <small class="text-muted" style="font-size: 11px;">admin@bmd.pemda.go.id</small>
+                        <span class="d-block fw-bold text-dark fs-7"><?= esc(session('nama_lengkap') ?? 'Administrator BMD') ?></span>
+                        <small class="text-muted d-block text-truncate" style="font-size: 11px;"><?= esc(session('email') ?? 'admin@bmd.pemda.go.id') ?></small>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 mt-1" style="font-size: 10px;">Role: <?= strtoupper(esc(session('role') ?? 'ADMIN')) ?></span>
                     </li>
                     <li><a class="dropdown-item py-2 d-flex align-items-center gap-2 text-secondary" href="<?= base_url('kendaraan') ?>"><i class="fa-solid fa-car text-primary"></i>Kelola Armada</a></li>
                     <li><a class="dropdown-item py-2 d-flex align-items-center gap-2 text-secondary" href="<?= base_url('pemeliharaan') ?>"><i class="fa-solid fa-wrench text-warning"></i>Jadwal Servis</a></li>
                     <li><hr class="dropdown-divider my-1"></li>
-                    <li><span class="dropdown-item py-2 text-muted small"><i class="fa-solid fa-circle-check text-success me-1"></i>CSRF Protection Active</span></li>
+                    <li>
+                        <a class="dropdown-item py-2 d-flex align-items-center gap-2 text-danger fw-semibold" href="<?= base_url('logout') ?>">
+                            <i class="fa-solid fa-right-from-bracket"></i>Keluar (Logout)
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
