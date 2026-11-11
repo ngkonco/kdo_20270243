@@ -52,7 +52,7 @@
 
                         <div class="col-md-6">
                             <label for="pegawai_id" class="form-label fw-semibold text-secondary">
-                                Pegawai PNS Pemegang <small class="text-muted fw-normal">(Opsional / Kosongkan jika Pool)</small>
+                                Data Pegawai <small class="text-muted fw-normal">(Opsional / Kosongkan jika Pool)</small>
                             </label>
                             <select name="pegawai_id" id="pegawai_id" class="form-select <?= (isset(session('errors')['pegawai_id'])) ? 'is-invalid' : '' ?>">
                                 <option value="">-- Tidak Ditugaskan (Kendaraan Pool) --</option>

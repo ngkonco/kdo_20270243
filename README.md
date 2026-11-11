@@ -49,6 +49,9 @@ Aplikasi ini mengadopsi standar arsitektur **MVC (Model-View-Controller)** yang 
    ```
    *Mengeksekusi 4 migration files skema 3NF: `perangkat_daerah`, `pegawai`, `kendaraan`, dan `riwayat_pemeliharaan`.*
 
+   docker compose exec app php spark migrate
+   docker compose exec app php spark db:seed MainSeeder
+
 4. **Jalankan Database Seeder**:
    ```bash
    docker compose exec app php spark db:seed MainSeeder
@@ -105,19 +108,35 @@ database_dump.sql
 
 ---
 
-## 📷 7. Checklist Bukti Screenshot (Repository Assets)
+## 📡 7. Endpoint REST API & Integrasi Asinkron
+SIM-KDO menyediakan endpoint REST API publik/internal terproteksi HTTP Security Headers untuk konsumsi AJAX, integrasi data eksternal, dan komponen UI interaktif:
 
-Untuk dokumentasi laporan praktikum / pengujian, tangkapan layar wajib disiapkan:
-- [x] **01_Dashboard_View.png**: Halaman dashboard utama menampilkan 4 metrik cards, Donut Chart, Bar Chart, dan tabel unit butuh perbaikan.
-- [x] **02_Kendaraan_List_Filter.png**: Tabel data KDO dengan filter kondisi dan instansi serta badge status warna-warni.
-- [x] **03_Kendaraan_Detail_Asset.png**: Halaman detail unit KDO menampilkan identitas kendaraan, kartu instansi, kartu PNS penanggung jawab, dan riwayat pemeliharaan.
-- [x] **04_Form_Create_Validation.png**: Form registrasi KDO baru dengan dropdown cascading instansi-pegawai dan feedback validasi error.
-- [x] **05_Pemeliharaan_List.png**: Rekapitulasi pemeliharaan dan total biaya servis.
-- [x] **06_Database_Structure_PMA.png**: Tampilan struktur tabel relasional (3NF) dan foreign keys di phpMyAdmin / terminal.
+| Metode | Endpoint URL | Parameter Query | Deskripsi |
+|:---:|:---|:---|:---|
+| `GET` | `/api/dashboard/stats` | `-` | Statistik ringkasan unit (Baik, Rusak Ringan, Rusak Berat) serta dataset Chart.js. |
+| `GET` | `/api/kendaraan/filter` | `kondisi`, `perangkat_daerah_id` | Data inventaris KDO lengkap dengan relasi instansi dan nama/NIP penanggung jawab. |
+| `GET` | `/api/pegawai/by-instansi/(:id)` | `id` (Instansi ID) | Daftar pejabat/ASN pada instansi terpilih untuk mendukung cascading dropdown. |
+
+> 📄 **Dokumentasi Lengkap Bukti Pengujian REST API**: Lihat berkas [bukti_pengujian_rest_api.md](bukti_pengujian_rest_api.md) untuk detail raw request headers, HTTP status 200 OK, dan JSON response payloads.
 
 ---
 
-## 🔒 8. Fitur Keamanan (Security Hardening)
+## 📷 8. Checklist Bukti Screenshot (Repository Assets)
+
+Tangkapan layar pengujian telah didokumentasikan dan tersimpan rapi pada folder `screenshot_aplikasi/fullstack/`:
+- [x] **Dashboard View**: `screenshot_aplikasi/fullstack/frontend/dashboard.png` (4 metrik cards, Donut Chart, Bar Chart, dan tabel unit butuh perbaikan).
+- [x] **Login Interface**: `screenshot_aplikasi/fullstack/frontend/login.png` (Tampilan login modern dengan kredensial demo 1-klik).
+- [x] **Kendaraan List & Filter**: `screenshot_aplikasi/fullstack/frontend/menu kendaraan atau armada.png` (Tabel KDO, badge status, filter instansi & kondisi).
+- [x] **Master Perangkat Daerah**: `screenshot_aplikasi/fullstack/frontend/Perangkat Daerah.png` (Master data dinas & SKPD).
+- [x] **Master Pegawai PNS**: `screenshot_aplikasi/fullstack/frontend/data Pegawai.png` (Data NIP 18 digit dan penugasan jabatan).
+- [x] **Riwayat Servis**: `screenshot_aplikasi/fullstack/frontend/Riwayat Servis.png` (Log pemeliharaan & sinkronisasi kondisi armada).
+- [x] **Database Relasional**: `screenshot_aplikasi/fullstack/database.png` (Struktur 3NF di phpMyAdmin).
+- [x] **Bukti REST API**: `screenshot_aplikasi/fullstack/backend/pengujian rest api pegawai by instansi.png` (Eksekusi endpoint JSON via browser/HTTP client).
+- [x] **Bukti Update Database**: `screenshot_aplikasi/fullstack/backend/bukti berhasil simpan ke database ketika update data.png`.
+
+---
+
+## 🔒 9. Fitur Keamanan (Security Hardening)
 - **CSRF Token Randomization**: Diaktifkan secara global di seluruh formulir dengan helper `<?= csrf_field() ?>`.
 - **SQL Injection Prevention**: Larangan keras concats string; 100% menggunakan CI4 Model Query Builder dengan PDO Prepared Statements parameter binding.
 - **XSS Sanitization**: Seluruh output variabel pada view dibungkus fungsi `<?= esc(...) ?>`.

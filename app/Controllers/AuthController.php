@@ -60,10 +60,13 @@ class AuthController extends BaseController
         // Simpan data autentikasi ke sesi pengguna
         session()->set([
             'user_id'      => $user['id'],
+            'role_id'      => $user['role_id'],
             'username'     => $user['username'],
             'nama_lengkap' => $user['nama_lengkap'],
             'email'        => $user['email'],
-            'role'         => $user['role'],
+            'role'         => $user['kode_role'] ?? $user['role'],
+            'role_name'    => $user['nama_role'] ?? ucfirst($user['role']),
+            'permissions'  => !empty($user['hak_akses']) ? json_decode($user['hak_akses'], true) : [],
             'logged_in'    => true,
         ]);
 

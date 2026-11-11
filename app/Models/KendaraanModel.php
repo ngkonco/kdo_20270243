@@ -186,7 +186,7 @@ class KendaraanModel extends Model
             ->join('perangkat_daerah', 'perangkat_daerah.id = kendaraan.perangkat_daerah_id', 'left')
             ->join('pegawai', 'pegawai.id = kendaraan.pegawai_id', 'left')
             ->whereIn('kendaraan.kondisi', ['Rusak Ringan', 'Rusak Berat'])
-            ->orderBy('kendaraan.kondisi = "Rusak Berat"', 'DESC')
+            ->orderBy("CASE WHEN kendaraan.kondisi = 'Rusak Berat' THEN 1 ELSE 2 END", 'ASC', false)
             ->orderBy('kendaraan.updated_at', 'DESC')
             ->findAll($limit);
     }

@@ -65,7 +65,7 @@
             <li class="nav-item">
                 <a href="<?= base_url('pegawai') ?>" class="nav-link d-flex align-items-center gap-3 px-3 py-2 rounded-2 <?= ($active_menu === 'pegawai') ? 'active bg-primary text-white shadow-sm' : 'text-secondary hover-dark' ?>">
                     <i class="fa-solid fa-id-badge fs-6" style="width: 20px;"></i>
-                    <span class="fw-medium fs-7">Pegawai PNS Pemegang</span>
+                    <span class="fw-medium fs-7">Data Pegawai</span>
                 </a>
             </li>
             <li class="nav-item">

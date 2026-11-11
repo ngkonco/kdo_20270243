@@ -17,11 +17,13 @@ class MainSeeder extends Seeder
         $this->db->table('pegawai')->truncate();
         $this->db->table('perangkat_daerah')->truncate();
         $this->db->table('users')->truncate();
+        $this->db->table('roles')->truncate();
 
         // Re-enable foreign key checks
         $this->db->enableForeignKeyChecks();
 
         // Call Seeders in strict foreign-key order
+        $this->call('RoleSeeder');
         $this->call('UserSeeder');
         $this->call('PerangkatDaerahSeeder');
         $this->call('PegawaiSeeder');

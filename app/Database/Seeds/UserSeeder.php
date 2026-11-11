@@ -12,6 +12,7 @@ class UserSeeder extends Seeder
         $data = [
             [
                 'id'           => 1,
+                'role_id'      => 1,
                 'username'     => 'admin',
                 'nama_lengkap' => 'Administrator BMD',
                 'email'        => 'admin@bmd.pemda.go.id',
@@ -22,6 +23,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'id'           => 2,
+                'role_id'      => 2,
                 'username'     => 'operator',
                 'nama_lengkap' => 'Operator Pengurus Barang',
                 'email'        => 'operator@bmd.pemda.go.id',
@@ -32,6 +34,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'id'           => 3,
+                'role_id'      => 3,
                 'username'     => 'pimpinan',
                 'nama_lengkap' => 'Kepala Badan BPKAD',
                 'email'        => 'pimpinan@bmd.pemda.go.id',
@@ -45,4 +48,3 @@ class UserSeeder extends Seeder
         $this->db->table('users')->insertBatch($data);
     }
 }
-

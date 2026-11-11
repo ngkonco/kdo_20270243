@@ -36,16 +36,17 @@ Cakupan instruksi mencakup:
 | `app/Database/Migrations/` | 4 Berkas migrasi database normalisasi 3NF dengan tipe data presisi, indeks, dan relasi foreign key. | Selesai & Teruji |
 | `app/Database/Seeds/` | 5 Berkas seeder (Perangkat Daerah, Pegawai, Kendaraan, Riwayat Pemeliharaan, dan MainSeeder) dengan data realistis plat dinas merah. | Selesai & Teruji |
 | `database_dump.sql` | Berkas dump SQL mandiri skema + seeder data siap impor langsung. | Selesai & Teruji |
-| `app/Models/` | 4 Model (`PerangkatDaerahModel`, `PegawaiModel`, `KendaraanModel`, `RiwayatPemeliharaanModel`) lengkap dengan `$allowedFields`, validasi, dan agregasi data analitik. | Selesai & Teruji |
-| `app/Controllers/` | 5 Controller (`DashboardController`, `PerangkatDaerahController`, `PegawaiController`, `KendaraanController`, `PemeliharaanController`) dengan logika CRUD lengkap, AJAX endpoint, dan feedback flashdata. | Selesai & Teruji |
-| `app/Filters/SecurityHeadersFilter.php` | Filter HTTP Security Headers (`X-Frame-Options`, `X-Content-Type-Options`, `CSP`, `Referrer-Policy`). | Selesai & Teruji |
+| `app/Models/` | 5 Model (`UserModel`, `PerangkatDaerahModel`, `PegawaiModel`, `KendaraanModel`, `RiwayatPemeliharaanModel`) lengkap dengan `$allowedFields`, validasi, dan agregasi data analitik. | Selesai & Teruji |
+| `app/Controllers/` | 6 Controller (`AuthController`, `DashboardController`, `PerangkatDaerahController`, `PegawaiController`, `KendaraanController`, `PemeliharaanController`) dengan logika autentikasi, CRUD lengkap, AJAX endpoint, dan feedback flashdata. | Selesai & Teruji |
+| `app/Filters/` | 2 Filter Keamanan (`SecurityHeadersFilter` & `AuthFilter` untuk proteksi sesi). | Selesai & Teruji |
 | `app/Views/layouts/` | Master view `main.php`, Metronic-style dark sidebar `sidebar.php`, dan sticky header navbar `navbar.php`. | Selesai & Teruji |
+| `app/Views/auth/login.php` | Antarmuka login modern dengan kontras warna tinggi, ambient glow, eye-toggle password, dan 1-Click Demo Login pills. | Selesai & Teruji |
 | `app/Views/dashboard/` | Halaman dashboard dengan 4 summary cards, Donut Chart, Bar Chart, dan tabel unit butuh perbaikan. | Selesai & Teruji |
 | `app/Views/kendaraan/` | View index (DataTables & filter), create (cascading dropdown instansi-pegawai), edit, dan kartu aset detail komprehensif. | Selesai & Teruji |
 | `app/Views/pegawai/` | View index, create, dan edit master pegawai PNS. | Selesai & Teruji |
 | `app/Views/perangkat_daerah/` | View index, create, dan edit master perangkat daerah. | Selesai & Teruji |
 | `app/Views/pemeliharaan/` | View index rekapitulasi, create pencatatan servis (sinkronisasi status), dan edit. | Selesai & Teruji |
-| `README.md` & `agents.md` | Dokumentasi teknis, petunjuk instalasi, panduan ekspor database, dan deklarasi AI. | Selesai & Teruji |
+| `README.md`, `agents.md`, `akses_aplikasi.md`, `bukti_pengujian_rest_api.md` | Dokumentasi teknis, kredensial pengguna, bukti pengujian REST API, petunjuk instalasi, panduan ekspor database, dan deklarasi AI. | Selesai & Teruji |
 
 ---
 

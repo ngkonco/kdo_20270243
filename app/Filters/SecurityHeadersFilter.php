@@ -54,13 +54,13 @@ class SecurityHeadersFilter implements FilterInterface
         // 5. Permissions Policy
         $response->setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
-        // 6. Content Security Policy (allows CDNs for Bootstrap, FontAwesome, Chart.js, DataTables, and SweetAlert2)
+        // 6. Content Security Policy (allows CDNs for Bootstrap, FontAwesome, Chart.js, DataTables, UI-Avatars, and Sourcemaps)
         $csp = "default-src 'self'; "
-            . "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://code.jquery.com; "
-            . "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; "
+            . "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://code.jquery.com https://cdn.datatables.net; "
+            . "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://cdn.datatables.net; "
             . "font-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.gstatic.com data:; "
-            . "img-src 'self' data: https:; "
-            . "connect-src 'self';";
+            . "img-src 'self' data: https: https://ui-avatars.com; "
+            . "connect-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.datatables.net;";
         $response->setHeader('Content-Security-Policy', $csp);
 
         return $response;

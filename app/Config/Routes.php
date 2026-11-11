@@ -69,4 +69,6 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
 $routes->group('api', static function ($routes) {
     $routes->get('kendaraan/filter', 'KendaraanController::filterData');
     $routes->get('dashboard/stats', 'DashboardController::apiStats');
+    $routes->get('pegawai/by-instansi/(:num)', 'PegawaiController::getByInstansi/$1');
 });
+$routes->get('pegawai/by-instansi/(:num)', 'PegawaiController::getByInstansi/$1');
