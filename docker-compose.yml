@@ -1,0 +1,67 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kdo_app
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/writable
+    environment:
+      CI_ENVIRONMENT: development
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - kdo_network
+
+  db:
+    image: mariadb:10.11
+    container_name: kdo_db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_kdo_2026
+      MYSQL_DATABASE: kdo_bmd
+      MYSQL_USER: kdo_user
+      MYSQL_PASSWORD: kdo_password_2026
+    volumes:
+      - kdo_mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+    networks:
+      - kdo_network
+
+  pma:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: kdo_pma
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: kdo_user
+      PMA_PASSWORD: kdo_password_2026
+      UPLOAD_LIMIT: 64M
+    depends_on:
+      - db
+    networks:
+      - kdo_network
+
+networks:
+  kdo_network:
+    driver: bridge
+
+volumes:
+  kdo_mariadb_data:
+    driver: local
+
